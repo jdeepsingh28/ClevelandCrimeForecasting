@@ -65,3 +65,12 @@ CREATE TABLE forecasted_weather (
 	precipitation_hours	FLOAT, 
 	PRIMARY KEY (lat, lon, date)
 ); 
+
+CREATE TABLE sports_events (
+	date	DATE, 
+	location	VARCHAR, 
+	home_team	VARCHAR, 
+	lat	FLOAT, 
+	lon	FLOAT, 
+	geoid	VARCHAR
+)
