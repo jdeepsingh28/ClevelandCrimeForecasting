@@ -12,7 +12,9 @@ app = FastAPI()
 
 # Set up the templates folder
 templates = Jinja2Templates(directory="templates")
-#Create more templates to allow for simplification and grouping of html files
+userTemplates = Jinja2Templates(directory="templates/userTemplates")
+devTemplates = Jinja2Templates(directory="templates/devTemplates")
+# Create more templates to allow for simplification and grouping of html files
 
 # Load the data
 data = pd.read_csv("crime_weather_preprocessed.csv")
@@ -44,17 +46,21 @@ async def developer_page(request: Request):
 # Weather and crime map route
 @app.get("/weather-crime-map", response_class=HTMLResponse)
 async def weather_crime_map(request: Request):
-    return templates.TemplateResponse("weather_crime_map_by_census_block_with_time.html", {"request": request})
+    return userTemplates.TemplateResponse("weather_crime_map_by_census_block_with_time.html", {"request": request})
 
 # Route to display the data page
+
+
 @app.get("/data", response_class=HTMLResponse)
 async def display_data(request: Request):
-    return templates.TemplateResponse("data.html", {"request": request})
+    return userTemplates.TemplateResponse("data.html", {"request": request})
 
 # Route to display the models page
+
+
 @app.get("/models", response_class=HTMLResponse)
 async def display_data(request: Request):
-    return templates.TemplateResponse("models.html", {"request": request})
+    return userTemplates.TemplateResponse("models.html", {"request": request})
 
 # ------------------------------------------------------------------------
 
@@ -78,7 +84,7 @@ async def get_data(page: int = Query(1, ge=1), page_size: int = Query(10, ge=1, 
 
 @app.get("/pipeline", response_class=HTMLResponse)
 async def pipeline_page(request: Request):
-    return templates.TemplateResponse("pipeline.html", {"request": request})
+    return devTemplates.TemplateResponse("pipeline.html", {"request": request})
 
 # Runs the data pipeline in data_pipelining file
 
@@ -93,6 +99,6 @@ async def run_pipeline_route(request: Request, start_date: str = Form(...), end_
     result = run_pipeline(start_date_obj, end_date_obj)
 
     # Return a response showing the result
-    return templates.TemplateResponse("pipeline_result.html", {"request": request, "message": f"Pipeline processed {result} records between {start_date} and {end_date}."})
+    return devTemplates.TemplateResponse("pipeline_result.html", {"request": request, "message": f"Pipeline processed {result} records between {start_date} and {end_date}."})
 
 # ------------------------------------------------------------------------

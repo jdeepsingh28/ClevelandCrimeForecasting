@@ -9,8 +9,11 @@ from datetime import datetime
 def run_pipeline(early_time_bound, late_time_bound):
 
     # Dates
-    early_time_bound = '2024-9-02'
-    late_time_bound = '2024-10-02'
+
+    print(early_time_bound)
+    print(late_time_bound)
+    # early_time_bound = '2024-9-02'
+    # late_time_bound = '2024-10-02'
 
     # Define the URL to query
     url = f"https://services3.arcgis.com/dty2kHktVXHrqO8i/arcgis/rest/services/Crime_Incidents/FeatureServer/0/query?where=ReportedDate%20%3E=%20DATE%20%27{early_time_bound}%27%20AND%20ReportedDate%20%3C=%20DATE%20%27{late_time_bound}%27&outFields=*&returnIdsOnly=true&outSR=4326&f=json"
