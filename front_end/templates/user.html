@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Data Analysis, Visualization and Modeling</title>
+    <title>Data Analysis, Visualization, and Modeling</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,60 +14,60 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .container {
             text-align: center;
             background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            width: 80%;
-            max-width: 600px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            width: 90%;
+            max-width: 700px;
         }
 
         h1 {
             color: #333;
-            font-size: 2.5em;
-            margin: 0;
+            font-size: 2.2em;
+            margin-bottom: 20px;
         }
 
         p {
-            color: #666;
+            color: #555;
             font-size: 1.2em;
-            margin-top: 10px;
+            margin-top: 5px;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
 
         .btn-container {
-            margin-top: 30px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
+            margin-top: 30px;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 15px;
             font-size: 1.1em;
             color: #fff;
             background-color: #007acc;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 60px;
+            /* Ensure buttons are of equal height */
         }
 
         .btn:hover {
             background-color: #005f99;
-        }
-
-        @media (max-width: 600px) {
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
+            transform: translateY(-3px);
         }
     </style>
 </head>
@@ -75,11 +75,13 @@
 <body>
     <div class="container">
         <h1>Cleveland Crime Data Analysis</h1>
-        <p>Explore crime data patterns across Cleveland with interactive visualizations and insights.</p>
+        <p>Explore crime data patterns across Cleveland with interactive visualizations, data insights, and model
+            accuracies.</p>
         <div class="btn-container">
             <a href="/weather-crime-map" class="btn">View Crime and Weather Map</a>
             <a href="/data" class="btn">View Crime Data</a>
             <a href="/models" class="btn">View Model Outputs and Accuracies</a>
+            <a href="/analysis" class="btn">View PowerBI</a>
             <a href="/">Back to Home</a>
         </div>
     </div>

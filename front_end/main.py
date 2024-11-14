@@ -1,5 +1,3 @@
-# This was slapped together pretty quickly so far and needs a lot of work to be good.
-
 from fastapi import FastAPI, Request, Query, Form
 from fastapi.responses import HTMLResponse
 from fastapi.responses import JSONResponse
@@ -48,6 +46,13 @@ async def developer_page(request: Request):
 async def weather_crime_map(request: Request):
     return userTemplates.TemplateResponse("weather_crime_map_by_census_block_with_time.html", {"request": request})
 
+
+@app.get("/analysis", response_class=HTMLResponse)
+# Route to display powerBI
+async def developer_page(request: Request):
+    return userTemplates.TemplateResponse("powerBI.html", {"request": request})
+
+
 # Route to display the data page
 
 
@@ -55,20 +60,10 @@ async def weather_crime_map(request: Request):
 async def display_data(request: Request):
     return userTemplates.TemplateResponse("data.html", {"request": request})
 
-# Route to display the models page
-
-
-@app.get("/models", response_class=HTMLResponse)
-async def display_data(request: Request):
-    return userTemplates.TemplateResponse("models.html", {"request": request})
-
-# ------------------------------------------------------------------------
-
-
-# For developer page put all routes here
-# ------------------------------------------------------------------------
 
 # Paginated data endpoint
+
+
 @app.get("/api/data", response_class=JSONResponse)
 async def get_data(page: int = Query(1, ge=1), page_size: int = Query(10, ge=1, le=100)):
     start = (page - 1) * page_size
@@ -78,6 +73,19 @@ async def get_data(page: int = Query(1, ge=1), page_size: int = Query(10, ge=1, 
         "data": data_chunk,
         "total": len(data)
     }
+
+# Route to display the models page
+
+
+@app.get("/models", response_class=HTMLResponse)
+async def models(request: Request):
+    return userTemplates.TemplateResponse("models.html", {"request": request})
+
+# ------------------------------------------------------------------------
+
+
+# For developer page put all routes here
+# ------------------------------------------------------------------------
 
 # Route for the data pipelining page
 
@@ -99,6 +107,11 @@ async def run_pipeline_route(request: Request, start_date: str = Form(...), end_
     result = run_pipeline(start_date_obj, end_date_obj)
 
     # Return a response showing the result
-    return devTemplates.TemplateResponse("pipeline_result.html", {"request": request, "message": f"Pipeline processed {result} records between {start_date} and {end_date}."})
+    return devTemplates.TemplateResponse("pipeline_result.html", {"request": request, "message": result})
+
+
+@app.get("/devModels", response_class=HTMLResponse)
+async def devModels(request: Request):
+    return devTemplates.TemplateResponse("devModels.html", {"request": request})
 
 # ------------------------------------------------------------------------
