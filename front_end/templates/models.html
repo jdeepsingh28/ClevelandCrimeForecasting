@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cleveland Crime Data Analysis</title>
+    <title>Developer Page</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,7 +24,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 40px;
             width: 80%;
-            max-width: 400px;
+            max-width: 600px;
         }
 
         h1 {
@@ -37,12 +37,13 @@
             color: #666;
             font-size: 1.2em;
             margin-top: 10px;
-            margin-bottom: 30px;
         }
 
         .btn-container {
+            margin-top: 30px;
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            justify-content: space-around;
             gap: 20px;
         }
 
@@ -61,16 +62,22 @@
         .btn:hover {
             background-color: #005f99;
         }
+
+        @media (max-width: 600px) {
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Cleveland Crime Data Analysis</h1>
-        <p>Select your role to continue:</p>
+        <h1>Models Page</h1>
         <div class="btn-container">
-            <a href="/user" class="btn">User Page</a>
-            <a href="/developer" class="btn">Developer Page</a>
+            <p>Put whatever models and visuals you want here</p>
+            <a href="/">Back to Home</a>
         </div>
     </div>
 </body>
