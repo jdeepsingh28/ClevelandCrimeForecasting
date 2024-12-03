@@ -47,10 +47,22 @@ async def weather_crime_map(request: Request):
     return userTemplates.TemplateResponse("weather_crime_map_by_census_block_with_time.html", {"request": request})
 
 
-@app.get("/analysis", response_class=HTMLResponse)
+@app.get("/crime-analysis", response_class=HTMLResponse)
 # Route to display powerBI
-async def developer_page(request: Request):
+async def crime_PBI(request: Request):
     return userTemplates.TemplateResponse("powerBI.html", {"request": request})
+
+
+@app.get("/crime-analysis-weather", response_class=HTMLResponse)
+# Route to display powerBI
+async def weather_PBI(request: Request):
+    return userTemplates.TemplateResponse("powerBI_weather.html", {"request": request})
+
+
+@app.get("/crime-analysis-sports", response_class=HTMLResponse)
+# Route to display powerBI
+async def sports_PBI(request: Request):
+    return userTemplates.TemplateResponse("powerBI_sport.html", {"request": request})
 
 
 # Route to display the data page
