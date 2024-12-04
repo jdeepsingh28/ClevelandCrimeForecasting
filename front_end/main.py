@@ -88,7 +88,28 @@ async def neural_net(request: Request):
 @app.get("/xgboost", response_class=HTMLResponse)
 # Route to display powerBI
 async def xg_boost(request: Request):
-    return modelTemplates.TemplateResponse("xgboost.html", {"request": request})
+    feature_importance = pd.read_csv(
+        "/Users/nharms/Documents/College/CS/Senior_Project/front_end/templates/userTemplates/modelTemplates/XGBVisuals/feature_importances.csv")
+
+    # Convert the DataFrame to an HTML table
+    # Add classes for styling (e.g., Bootstrap)
+    html_table1 = feature_importance.to_html(
+        index=False, classes="table table-striped")
+
+    predictions = pd.read_csv(
+        "/Users/nharms/Documents/College/CS/Senior_Project/front_end/templates/userTemplates/modelTemplates/XGBVisuals/future_data_preds.csv")
+
+    # Convert the DataFrame to an HTML table
+    # Add classes for styling (e.g., Bootstrap)
+    html_table2 = predictions.to_html(
+        index=False, classes="table table-striped")
+
+    # Render the neural network page and pass the table
+    return modelTemplates.TemplateResponse("xgboost.html", {
+        "request": request,
+        "table1": html_table1,
+        "table2": html_table2
+    })
 
 
 # Route to display the data page

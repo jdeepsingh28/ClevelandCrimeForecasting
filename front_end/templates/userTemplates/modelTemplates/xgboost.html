@@ -1,1 +1,202 @@
-<img src="https://drive.usercontent.google.com/download?id=1ts9VbWezdy79g3amKmiYED5NChojjxQf&export=view&authuser=0" alt="AUC Visual">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neural Network Analysis</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #CCCCCC;
+        }
+
+        .button-container {
+            margin: 0;
+            padding: 10px 20px;
+            text-align: left;
+            background-color: #101E46;
+        }
+
+        .btn-home {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #C8F8FF;
+            color: #101E46;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .btn-home:hover {
+            background-color: #A7D8E8;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1300px;
+            padding: 20px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            text-align: left;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: Cambria, serif;
+            color: #101E46;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p,
+        ul {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .model-metrics {
+            width: 100%;
+            margin: 20px auto;
+        }
+
+        .metrics-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .left-container,
+        .right-container {
+            width: 48%;
+        }
+
+        .left-container ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .right-container table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .right-container th,
+        .right-container td {
+            border: 1px solid #CCCCCC;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .right-container th {
+            background-color: #C8F8FF;
+            font-weight: bold;
+            color: #101E46;
+        }
+
+        .right-container tfoot td {
+            font-weight: bold;
+            background-color: #E8F6F8;
+        }
+
+        .images {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            background-color: #CCCCCC;
+        }
+
+        .images iframe {
+            width: 100%;
+            max-width: 640px;
+            height: 480px;
+            border: 2px solid #101E46;
+            border-radius: 5px;
+        }
+
+        .prediction-table {
+            margin-top: 40px;
+        }
+
+        .prediction-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .prediction-table th,
+        .prediction-table td {
+            border: 1px solid #CCCCCC;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .prediction-table th {
+            background-color: #C8F8FF;
+            color: #101E46;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button-container">
+        <a href="/" class="btn-home">Return to Home</a>
+        <a href="/user" class="btn-home">Return to User Page</a>
+        <a href="/neuralnet" class="btn-home">Go to Neural Network</a>
+    </div>
+    <div class="container">
+        <h1>XGBoost Analysis</h1>
+        <ul>
+            <li>Non-linearity: XGBoost can model non-linear relationships without explicit feature transformations.</li>
+            <li>Performance: XGBoost is optimized for speed and performance, which is crucial when working with a large dataset.
+            </li>
+            <li>Outliers: XGBoost is less sensitive to outliers due to the boosting technique used in its training.</li>
+            <li>Boosting Model: Trains decision trees sequentially, where each new tree attempts to correct the errors of the previous
+            tree. Helps reduce bias.</li>
+            <li>Model Interpretability: XGBoost returns a feature importance score making it easy to see which features influence the
+            model.</li>
+        </ul>
+
+        <div class="prediction-table">
+            <h2>Feature Importance</h2>
+            {{ table1|safe }}
+        </div>
+
+        <div class="prediction-table">
+            <h2>Future Predictions</h2>
+            {{ table2|safe }}
+        </div>
+
+
+
+        <div class="images">
+            <h2>Images</h2>
+            <iframe src="https://drive.google.com/file/d/1nUT1k9Kqjfj9SX5GHp4QygPvtP3KAyCB/preview"></iframe>
+            <iframe src="https://drive.google.com/file/d/1XZGLydl83yTKEESrI5W-yK2koX4u15WX/preview"></iframe>
+            <iframe src="https://drive.google.com/file/d/16Mw5kUZKJCWax5KM7eWolEvNGZwr7Gc8/preview"></iframe>
+            <iframe src="https://drive.google.com/file/d/1wySkyBO6kOxnKGbR7zBS7CPswLJLaExT/preview"></iframe>
+            <iframe src="https://drive.google.com/file/d/17SN4eL_mTlNXiJzHW7T_uUPwYl0Zf4bs/preview"></iframe>
+            <iframe src="https://drive.google.com/file/d/1RApwIX5sjonuzy3MRH2JLo4U3Nor8B1G/preview"></iframe>
+            <iframe src="https://drive.google.com/file/d/1VZTRfo0mRo46AgfPVGBKt9bvAHs87iUa/preview"></iframe>
+        </div>
+    </div>
+</body>
+
+</html>
