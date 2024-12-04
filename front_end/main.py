@@ -2,9 +2,11 @@ from fastapi import FastAPI, Request, Query, Form
 from fastapi.responses import HTMLResponse
 from fastapi.responses import JSONResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.staticfiles import StaticFiles
 import pandas as pd
 from data_pipelining import run_pipeline
 from datetime import datetime
+from CrimePreprocessing import preprocessData
 
 app = FastAPI()
 
@@ -14,6 +16,9 @@ userTemplates = Jinja2Templates(directory="templates/userTemplates")
 modelTemplates = Jinja2Templates(
     directory="templates/userTemplates/modelTemplates")
 devTemplates = Jinja2Templates(directory="templates/devTemplates")
+
+# app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Create more templates to allow for simplification and grouping of html files
 
 # Load the data
@@ -72,7 +77,7 @@ async def neural_net(request: Request):
     # Load the CSV file
     # Replace with your CSV file path
     nn_data = pd.read_csv(
-        "/Users/nharms/Documents/College/CS/Senior_Project/front_end/templates/userTemplates/modelTemplates/NNVisuals/one_week_ahead_predictions.csv")
+        "static/one_week_ahead_predictions.csv")
 
     # Convert the DataFrame to an HTML table
     # Add classes for styling (e.g., Bootstrap)
@@ -88,16 +93,14 @@ async def neural_net(request: Request):
 @app.get("/xgboost", response_class=HTMLResponse)
 # Route to display powerBI
 async def xg_boost(request: Request):
-    feature_importance = pd.read_csv(
-        "/Users/nharms/Documents/College/CS/Senior_Project/front_end/templates/userTemplates/modelTemplates/XGBVisuals/feature_importances.csv")
+    feature_importance = pd.read_csv("static/feature_importances.csv")
 
     # Convert the DataFrame to an HTML table
     # Add classes for styling (e.g., Bootstrap)
     html_table1 = feature_importance.to_html(
         index=False, classes="table table-striped")
 
-    predictions = pd.read_csv(
-        "/Users/nharms/Documents/College/CS/Senior_Project/front_end/templates/userTemplates/modelTemplates/XGBVisuals/future_data_preds.csv")
+    predictions = pd.read_csv("static/future_data_preds.csv")
 
     # Convert the DataFrame to an HTML table
     # Add classes for styling (e.g., Bootstrap)
@@ -164,9 +167,23 @@ async def run_pipeline_route(request: Request, start_date: str = Form(...), end_
 
     # Run the pipelining function with the parsed dates
     result = run_pipeline(start_date_obj, end_date_obj)
+    result.to_csv("pipelinedData")
+
+    preprocessData()
+
+    pipeline = pd.read_csv("pipelinedData")
+
+    # Convert the DataFrame to an HTML table
+    # Add classes for styling (e.g., Bootstrap)
+    html_table1 = pipeline.to_html(
+        index=False, classes="table table-striped")
 
     # Return a response showing the result
-    return devTemplates.TemplateResponse("pipeline_result.html", {"request": request, "message": result})
+    return devTemplates.TemplateResponse("pipeline_result.html", {
+        "request": request,
+        "table1": html_table1,
+        "message": result
+    })
 
 
 @app.get("/devModels", response_class=HTMLResponse)

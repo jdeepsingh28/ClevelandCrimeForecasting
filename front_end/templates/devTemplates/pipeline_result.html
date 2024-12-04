@@ -4,13 +4,62 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        .prediction-table {
+            margin-top: 40px;
+        }
+
+        .button-container {
+            margin: 0;
+            padding: 10px 20px;
+            text-align: left;
+            background-color: #101E46;
+        }
+
+         .btn-home {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #C8F8FF;
+            color: #101E46;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-right: 10px;
+        }
+
+        .btn-home:hover {
+            background-color: #A7D8E8;
+        }
+
+        .prediction-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .prediction-table th,
+        .prediction-table td {
+            border: 1px solid #CCCCCC;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .prediction-table th {
+            background-color: #C8F8FF;
+            color: #101E46;
+        }
+    </style>
     <title>Pipeline Result</title>
 </head>
 
 <body>
-    <h1>Pipeline Result</h1>
-    <p>{{ message }}</p>
-    <a href="/pipeline">Back to Pipeline</a>
+    <div class="button-container">
+        <a href="/" class="btn-home">Return to Home</a>
+        <a href="/developer" class="btn-home">Return to Developer Page</a>
+    </div>
+    <div class="prediction-table">
+        <h2>Selected Crimes</h2>
+        {{ table1|safe }}
+    </div>
 </body>
 
 </html>
