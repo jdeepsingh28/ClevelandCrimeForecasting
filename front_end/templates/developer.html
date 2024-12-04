@@ -7,60 +7,59 @@
     <title>Developer Page</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Calibri', sans-serif;
             background-color: #f4f4f9;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
         .container {
             text-align: center;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            width: 80%;
-            max-width: 600px;
+            background-color: #CCCCCC;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            padding: 50px;
+            width: 90%;
+            max-width: 700px;
         }
 
         h1 {
-            color: #333;
+            font-family: 'Cambria', serif;
+            color: #101E46;
             font-size: 2.5em;
-            margin: 0;
-        }
-
-        p {
-            color: #666;
-            font-size: 1.2em;
-            margin-top: 10px;
+            margin-bottom: 20px;
         }
 
         .btn-container {
-            margin-top: 30px;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
             gap: 20px;
+            margin-top: 30px;
         }
 
         .btn {
             padding: 15px 40px;
             font-size: 1.1em;
-            color: #fff;
-            background-color: #007acc;
+            color: #FFFFFF;
+            background-color: #101E46;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
             text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn:hover {
-            background-color: #005f99;
+            background-color: #081030;
+            transform: translateY(-3px);
         }
 
         @media (max-width: 600px) {
@@ -77,9 +76,8 @@
         <h1>Developer Page</h1>
         <div class="btn-container">
             <a href="/pipeline" class="btn">Data Pipeline</a>
-            <!-- Make sure to change this once your have created a new models page-->
             <a href="/devModels" class="btn">Run Models</a>
-            <a href="/">Back to Home</a>
+            <a href="/" class="btn">Back to Home</a>
         </div>
     </div>
 </body>
