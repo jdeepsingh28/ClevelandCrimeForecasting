@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Developer Page</title>
+    <title>Cleveland Crime Data Analysis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -21,63 +21,55 @@
             text-align: center;
             background-color: #fff;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 40px;
-            width: 80%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            padding: 60px;
+            width: 90%;
             max-width: 600px;
         }
 
         h1 {
             color: #333;
-            font-size: 2.5em;
-            margin: 0;
+            font-size: 3em;
+            margin: 0 0 20px;
         }
 
         p {
             color: #666;
-            font-size: 1.2em;
-            margin-top: 10px;
+            font-size: 1.5em;
+            margin: 20px 0 40px;
         }
 
         .btn-container {
-            margin-top: 30px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            gap: 20px;
+            flex-direction: column;
+            gap: 30px;
         }
 
         .btn {
-            padding: 15px 40px;
-            font-size: 1.1em;
+            padding: 20px 50px;
+            font-size: 1.5em;
             color: #fff;
             background-color: #007acc;
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.2s;
             text-decoration: none;
         }
 
         .btn:hover {
             background-color: #005f99;
-        }
-
-        @media (max-width: 600px) {
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
+            transform: scale(1.05);
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <h1>Models Page</h1>
+        <h1>Machine Learning Models</h1>
         <div class="btn-container">
-            <p>Put whatever models and visuals you want here</p>
-            <a href="/">Back to Home</a>
+            <a href="/xgboost" class="btn">XGBoost</a>
+            <a href="/neuralnet" class="btn">Neural Network</a>
         </div>
     </div>
 </body>

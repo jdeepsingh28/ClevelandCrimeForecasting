@@ -11,6 +11,8 @@ app = FastAPI()
 # Set up the templates folder
 templates = Jinja2Templates(directory="templates")
 userTemplates = Jinja2Templates(directory="templates/userTemplates")
+modelTemplates = Jinja2Templates(
+    directory="templates/userTemplates/modelTemplates")
 devTemplates = Jinja2Templates(directory="templates/devTemplates")
 # Create more templates to allow for simplification and grouping of html files
 
@@ -63,6 +65,18 @@ async def weather_PBI(request: Request):
 # Route to display powerBI
 async def sports_PBI(request: Request):
     return userTemplates.TemplateResponse("powerBI_sport.html", {"request": request})
+
+
+@app.get("/neuralnet", response_class=HTMLResponse)
+# Route to display powerBI
+async def neural_net(request: Request):
+    return modelTemplates.TemplateResponse("nn.html", {"request": request})
+
+
+@app.get("/xgboost", response_class=HTMLResponse)
+# Route to display powerBI
+async def xg_boost(request: Request):
+    return modelTemplates.TemplateResponse("xgboost.html", {"request": request})
 
 
 # Route to display the data page
