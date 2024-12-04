@@ -68,9 +68,21 @@ async def sports_PBI(request: Request):
 
 
 @app.get("/neuralnet", response_class=HTMLResponse)
-# Route to display powerBI
 async def neural_net(request: Request):
-    return modelTemplates.TemplateResponse("nn.html", {"request": request})
+    # Load the CSV file
+    # Replace with your CSV file path
+    nn_data = pd.read_csv(
+        "/Users/nharms/Documents/College/CS/Senior_Project/front_end/templates/userTemplates/modelTemplates/NNVisuals/one_week_ahead_predictions.csv")
+
+    # Convert the DataFrame to an HTML table
+    # Add classes for styling (e.g., Bootstrap)
+    html_table = nn_data.to_html(index=False, classes="table table-striped")
+
+    # Render the neural network page and pass the table
+    return modelTemplates.TemplateResponse("nn.html", {
+        "request": request,
+        "table": html_table
+    })
 
 
 @app.get("/xgboost", response_class=HTMLResponse)
