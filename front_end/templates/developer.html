@@ -36,14 +36,12 @@
 
         .btn-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
+            flex-direction: column;
             gap: 20px;
-            margin-top: 30px;
         }
 
         .btn {
-            padding: 15px 40px;
+            padding: 15px;
             font-size: 1.1em;
             color: #FFFFFF;
             background-color: #101E46;
@@ -55,18 +53,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 60px;
         }
 
         .btn:hover {
             background-color: #081030;
             transform: translateY(-3px);
-        }
-
-        @media (max-width: 600px) {
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
         }
     </style>
 </head>
@@ -76,7 +68,6 @@
         <h1>Developer Page</h1>
         <div class="btn-container">
             <a href="/pipeline" class="btn">Data Pipeline</a>
-            <a href="/devModels" class="btn">Run Models</a>
             <a href="/" class="btn">Back to Home</a>
         </div>
     </div>
